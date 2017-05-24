@@ -1,0 +1,67 @@
+.tinggihalaman {
+  min-height: 600px;
+}
+.footer {
+  position: relative;
+}
+.marginheader {
+  margin-top: 50px;
+}
+
+.vitra-background-toska{
+  background-color: #1abc9c;
+  height: 250px;
+  width: 100%;
+}
+
+.vitra-background-red{
+  background-color: #474e5d;
+  height: 250px;
+  width: 100%;
+}
+
+body {
+  font-family: 'Courier New', cursive;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background-color: skyblue;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+.content {
+    margin-left: 40px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Courier New', cursive;
+    color: cobaltblue;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+/*.about {
+    width: 50%;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 70px;
+}*/
+
+p.solid {border-style: solid;}

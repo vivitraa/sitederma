@@ -1,0 +1,31 @@
+{% extends 'sitederma/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<style>
+.container-fluid {margin-top: 100px;}
+</style>
+<div class="container-fluid tinggihalaman">
+  <div class="col-md-2"></div>
+
+  <div class="col-md-4">
+    <ul>
+      {% for info_penyakit in info_penyakit %}
+    <li>{{ info_penyakit.nama_penyakit}}</li>
+    <!-- <p>nama lain penyakit : {{ info_penyakit.nama_lain_penyakit}}</p>
+    <p>info umum : {{ info_penyakit.info_umum }}</p>
+    <p>penyebab : {{ info_penyakit.penyebab }}</p>
+    <p>gejala : {{ info_penyakit.gejala }}</p>
+    <p>treatment : {{ info_penyakit.treatment }}</p>
+    <p>pencegahan : {{ info_penyakit.pencegahan }}</p>
+    <p>peringatan : {{info_penyakit.peringatan }}</p> -->
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+
+{% endblock %}
