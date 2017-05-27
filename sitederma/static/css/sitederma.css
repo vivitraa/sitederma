@@ -1,9 +1,44 @@
 .tinggihalaman {
   min-height: 600px;
 }
+
+.navbar {
+  border: 0;
+  background-color: #2d2d30;
+  margin-bottom: 0;
+  border-radius: 0;
+  font-size: 12px !important;
+  line-height: 1.5;
+  letter-spacing: 4px;
+  opacity: 0.6;
+}
+
 .footer {
+  background-color: #2d2d30;
+  color: #fff;
+  padding: 5px;
   position: relative;
 }
+
+.navbar li a, .navbar .navbar-brand {
+  color: #d5d5d5 !important;
+}
+
+.navbar-nav li a:hover:not(.active){
+  background-color: grey;{
+  color: #fff !important;
+}
+
+.navbar-nav li.active a {
+  color: #fff !important;
+  background-color:#29292c !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff;
+}
+
 .marginheader {
   margin-top: 50px;
 }
@@ -12,6 +47,7 @@
   background-color: #1abc9c;
   height: 250px;
   width: 100%;
+  min-height: 600px;
 }
 
 .vitra-background-red{
@@ -54,14 +90,5 @@ h1, h2, h3, h4 {
     font-size: 26pt;
     margin-right: 20px;
 }
-
-/*.about {
-    width: 50%;
-    float: left;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-    margin-bottom: 70px;
-}*/
 
 p.solid {border-style: solid;}
