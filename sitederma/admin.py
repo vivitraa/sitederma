@@ -38,8 +38,7 @@ class ListGejalaAdmin(admin.ModelAdmin):
 admin.site.register(ListGejala, ListGejalaAdmin)
 
 class ListPertanyaanAdmin(admin.ModelAdmin):
-    list_display = ['kode_pertanyaan', 'pertanyaan', 'gejala',]
-    search_fields = ['kode_pertanyaan']
+    list_display = ['indication_1',]
     list_per_page = 25
 admin.site.register(ListPertanyaan, ListPertanyaanAdmin)
 

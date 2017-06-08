@@ -2,10 +2,16 @@
 
 {% block content %}
 
-<div class="container-fluid tinggihalaman">
+<script>
+  {% if user.is_authenticated %}
+    window.location = "{% url 'sitederma:home_utama' %}";
+  {% endif %}
+</script>
+
+<div class="container-fluid vitra-background-daftar">
   <div class="col-md-4"></div>
   <div class="col-md-4">
-    <div style="margin-top:200px;">
+    <div style="margin-top:70px;">
       <form action="" method="POST">{% csrf_token %}
         <div>
           {% for field in form %}
@@ -15,7 +21,7 @@
           </div>
           {% endfor %}
         </div>
-        <div class="text-center">
+        <div class="text-center" style="margin-top: 20px;">
           <button type="submit" name="signup" class="btn btn-default">Daftar</button>
         </div>
       </form>

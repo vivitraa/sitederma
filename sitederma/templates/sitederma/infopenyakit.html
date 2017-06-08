@@ -1,31 +1,35 @@
 {% extends 'sitederma/base.html' %}
-{% load staticfiles %}
-
+{% load static %}
 {% block content %}
-<style>
-.container-fluid {margin-top: 100px;}
-</style>
-<div class="container-fluid tinggihalaman">
-  <div class="col-md-2"></div>
-
-  <div class="col-md-4">
-    <ul>
-      {% for info_penyakit in info_penyakit %}
-    <li>{{ info_penyakit.nama_penyakit}}</li>
-    <!-- <p>nama lain penyakit : {{ info_penyakit.nama_lain_penyakit}}</p>
-    <p>info umum : {{ info_penyakit.info_umum }}</p>
-    <p>penyebab : {{ info_penyakit.penyebab }}</p>
-    <p>gejala : {{ info_penyakit.gejala }}</p>
-    <p>treatment : {{ info_penyakit.treatment }}</p>
-    <p>pencegahan : {{ info_penyakit.pencegahan }}</p>
-    <p>peringatan : {{info_penyakit.peringatan }}</p> -->
-      {% endfor %}
-    </ul>
+<div class="container-fluid vitra-background-info-penyakit">
+  <h4 class="vitra-tagline text-center">Penyakit Kulit pada Kucing</h4>
+  <div style="margin-bottom: 20px;">
+  {% for info_penyakit in info_penyakit %}
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="col-md-4 text-center" style="margin: 60px 0px; ">
+        <div class="row vitra-tagline" style="margin-bottom: 20px;">
+        {{ info_penyakit.nama_penyakit}}
+      </div>
+      <div class="row">
+        <img src="{% static 'image/kucing.jpg'%}" width="200" height="200"/>
+      </div>
+      </div>
+      <div class="col-md-8 text-left vitra-background-info">
+        <p>nama lain penyakit : {{ info_penyakit.nama_lain_penyakit}}</p>
+        <p>info umum : {{ info_penyakit.info_umum }}</p>
+        <p>penyebab : {{ info_penyakit.penyebab }}</p>
+        <p>gejala : {{ info_penyakit.gejala }}</p>
+        <p>treatment : {{ info_penyakit.treatment }}</p>
+        <p>pencegahan : {{ info_penyakit.pencegahan }}</p>
+        <p>peringatan : {{info_penyakit.peringatan }}</p>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
   </div>
-  <div class="col-md-4">
-  </div>
-  <div class="col-md-2"></div>
+  {% endfor %}
 </div>
-
+</div>
 
 {% endblock %}

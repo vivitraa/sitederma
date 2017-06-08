@@ -1,0 +1,14 @@
+{% extends 'sitederma/base.html' %}
+{% block content %}
+
+<script>
+  {% if not user.is_authenticated %}
+    window.location = "{% url 'sitederma:login' %}";
+  {% endif %}
+</script>
+
+<div class="container-fluid vitra-background-riwayat">
+
+</div>
+
+{% endblock %}

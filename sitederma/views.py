@@ -8,7 +8,7 @@ import hashlib, datetime, random
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from .models import UserActivationKey
+from .models import UserActivationKey, ListPertanyaan
 from django.utils import timezone
 
 def home_utama(request):
@@ -18,7 +18,7 @@ def kontak_view(request):
     return render(request, "sitederma/kontak.html")
 
 def help_view(request):
-    return render(request, "sitederma/help.html")
+    return render(request, "sitederma/bantuan.html")
 
 def infopenyakit_view(request):
     info_penyakit = InfoPenyakit.objects.all()
@@ -87,3 +87,12 @@ def account_expired_view():
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def konsultasi_view(request):
+    indications = ListPertanyaan.objects.all()
+    context = {}
+    context ['indications'] = indications
+    return render(request, "sitederma/mulai_konsul.html", context)
+
+def riwayat_view(request):
+    return render(request, "sitederma/riwayat.html")

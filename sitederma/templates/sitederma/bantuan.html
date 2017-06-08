@@ -1,0 +1,53 @@
+{% extends 'sitederma/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid vitra-background-bantuan">
+  <div class="row">
+    <div class="text-center" style="margin-top: 25px;">
+      <h4 class="vitra-tagline">Cara Menggunakan Aplikasi</h4>
+
+      <div class="row" style="margin-top: 50px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="col-md-4 text-center">
+            <img src="{% static 'image/kucing.jpg'%}" width="200" height="200"/>
+          </div>
+          <div class="col-md-8 text-left vitra-background-cara">
+              <p> cara 1</p>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+
+      <div class="row" style="margin-top: 25px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="col-md-4 text-center">
+            <img src="{% static 'image/kucing.jpg'%}" width="200" height="200"/>
+          </div>
+          <div class="col-md-8 text-left vitra-background-cara">
+            <p> cara 2</p>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+
+      <div class="row" style="margin-top: 25px; margin-bottom: 25px">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="col-md-4 text-center">
+            <img src="{% static 'image/kucing.jpg'%}" width="200" height="200"/>
+          </div>
+          <div class="col-md-8 text-left vitra-background-cara">
+            <p> cara 3</p>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from .models import ListPertanyaan
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='username', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'username'}))
@@ -24,3 +25,18 @@ class SignupForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise ValidationError("Email yang anda masukan sudah terdaftar")
         return email
+
+class PertanyaanForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(PertanyaanForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget = form.RadioSelect()
+            field.empty_value = None
+            field.choices = List_Choice
+            field.widget.attrs = {'class': 'magic-radio'}
+
+    class Meta:
+        model = ListPertanyaan
+        fields = '__all__'

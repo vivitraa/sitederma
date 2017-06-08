@@ -1,59 +1,95 @@
-.tinggihalaman {
-  min-height: 600px;
-}
-
-.navbar {
-  border: 0;
-  background-color: #2d2d30;
-  margin-bottom: 0;
-  border-radius: 0;
-  font-size: 12px !important;
-  line-height: 1.5;
-  letter-spacing: 4px;
-  opacity: 0.6;
-}
-
 .footer {
-  background-color: #2d2d30;
-  color: #fff;
-  padding: 5px;
   position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #141f1f;
 }
 
-.navbar li a, .navbar .navbar-brand {
-  color: #d5d5d5 !important;
+.vitra-footer {
+  color: white;
+  margin: 15px 0px;
 }
 
-.navbar-nav li a:hover:not(.active){
-  background-color: grey;{
-  color: #fff !important;
+.vitra-background-info-penyakit {
+  min-height: 610px;
+  background-color: #1abc9c;
+  margin-top: -20px;
 }
 
-.navbar-nav li.active a {
-  color: #fff !important;
-  background-color:#29292c !important;
+.vitra-background-info {
+    background-color: #e0ebeb;
+    height: 550px;
+    padding: 15px;
 }
 
-.navbar-default .navbar-toggle {
-  border-color: transparent;
-  color: #fff;
+.vitra-background-beranda {
+  min-height: 610px;
+  margin-top: -20px;
+}
+
+#vitra-background-green {
+  background-color: #1abc9c;
+  height: 380px;
+  width: 100%;
+}
+
+#vitra-background-grey {
+  background-color: #e0ebeb;
+  height: 305px;
+  width: 100%;
+}
+
+.vitra-tagline {
+  color: white;
+  margin-top: 20px;
+  font-size: 32px;
+}
+
+.vitra-background-kontak {
+  min-height: 610px;
+  background-color: #1abc9c;
+  margin-top: -20px;
+}
+
+.vitra-background-bantuan{
+  min-height: 610px;
+  background-color: #1abc9c;
+  margin-top: -20px;
+}
+
+.vitra-background-cara{
+  background-color: #e0ebeb;
+  height: 200px;
+  padding: 15px;
+}
+
+.vitra-background-daftar {
+  min-height: 610px;
+  background-color: #1abc9c;
+  margin-top: -20px;
+}
+
+.vitra-background-masuk {
+  min-height: 610px;
+  background-color: #1abc9c;
+  margin-top: -20px;
+}
+
+.vitra-background-mulai-konsul {
+  min-height: 610px;
+  background-color: #1abc9c;
+  margin-top: -20px;
+}
+
+.vitra-background-riwayat {
+  min-height: 610px;
+  background-color: #1abc9c;
+  margin-top: -20px;
 }
 
 .marginheader {
   margin-top: 50px;
-}
-
-.vitra-background-toska{
-  background-color: #1abc9c;
-  height: 250px;
-  width: 100%;
-  min-height: 600px;
-}
-
-.vitra-background-red{
-  background-color: #474e5d;
-  height: 250px;
-  width: 100%;
 }
 
 body {
