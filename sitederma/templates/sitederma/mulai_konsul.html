@@ -8,12 +8,34 @@
 </script>
 
 <div class="container-fluid vitra-background-mulai-konsul">
-  {% for field in indications %}
-  <div style="margin-top: 10px; color:black;">
+<form method="POST">
+  {% csrf_token %}
+  {% for tanya in list_tanya %}
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="col-md-8 text-left vitra-background-Tanya">
+          <p>{{ tanya.daftar_tanya }}</p>
+          {% for pilihan in list_pilihan %}
+          <input type="radio" name="choice" id="choice" value="{{list_pilihan.bobotjawab}}" />
+          <label for="choice{{ forloop.counter }}">{{ pilihan.jawab }}</label>
+
+          {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <!--{% for field in indications %}
+    <div style="margin-top: 10px; color:black;">
     {{ field.label_tag|escape }}
     {{ field }}
   </div>
+  {% endfor %}-->
+
+
   {% endfor %}
+  <input type='submit' value="submit">
+</form>
 </div>
 
 {% endblock %}

@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
-from .models import InfoPenyakit
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
 from .forms import SignupForm
 import hashlib, datetime, random
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from .models import UserActivationKey, ListPertanyaan
+from .models import UserActivationKey, ListTanya, InfoPenyakit, Jawaban, ListPenyakit, ListGejala
 from django.utils import timezone
 
 def home_utama(request):
@@ -89,10 +89,30 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def konsultasi_view(request):
-    indications = ListPertanyaan.objects.all()
+    list_tanya = ListTanya.objects.all()
+    list_pilihan = Jawaban.objects.all()
+    list_gejala = ListGejala.objects.all()
     context = {}
-    context ['indications'] = indications
+    context ['list_tanya'] = list_tanya
+    context ['list_pilihan'] = list_pilihan
+
+    if request.method=='POST':
+        penyakit = ListPenyakit.objects.all()
+        gejala = ListGejala.objects.all()
+        counter = 0
+
+        for cfuser in gejala:
+            counter =+1
+            #globals()['cfug_%0d'% counter] =
+            # cfuserfloat = request.POST.get(gejala+str(counter))
+            # print (cfuserfloat)
+
+        #return HttpResponseRedirect(reverse('sitederma:hasil'))
+
     return render(request, "sitederma/mulai_konsul.html", context)
+
+def hasil_view(request):
+    return render(request, "sitederma/halaman_hasil.html")
 
 def riwayat_view(request):
     return render(request, "sitederma/riwayat.html")

@@ -18,5 +18,6 @@ urlpatterns = [
     url(r'^akun/kadaluarsa/$', views.account_expired_view, name='account_expired'),
     url(r'^konsultasi/$', views.konsultasi_view, name='konsultasi'),
     url(r'^riwayat/$', views.riwayat_view, name='riwayat'),
+    url(r'^hasil/$', views.hasil_view, name='hasil'),
 
 ]
