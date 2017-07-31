@@ -8,8 +8,9 @@ import hashlib, datetime, random
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from .models import UserActivationKey, ListTanya, InfoPenyakit, Jawaban, ListPenyakit, ListGejala
+from .models import UserActivationKey, ListTanya, InfoPenyakit, Jawaban, ListGejala, Konsultasi
 from django.utils import timezone
+from collections import defaultdict
 
 def home_utama(request):
     return render(request, "sitederma/home_utama.html")
@@ -83,29 +84,39 @@ def account_confirmed_view():
 def account_expired_view():
     return render(request, "sitederma/account_expired.html")
 
-@login_required
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect('/')
-
 def konsultasi_view(request):
     list_tanya = ListTanya.objects.all()
     list_pilihan = Jawaban.objects.all()
-    list_gejala = ListGejala.objects.all()
+    gejala = ListGejala.objects.all()
+    penyakit = InfoPenyakit.objects.all()
+    gej_pen = Konsultasi.objects.all()
     context = {}
     context ['list_tanya'] = list_tanya
     context ['list_pilihan'] = list_pilihan
 
     if request.method=='POST':
-        penyakit = ListPenyakit.objects.all()
-        gejala = ListGejala.objects.all()
-        counter = 0
+        d = defaultdict(float)
+        d = {}
+        # cfgp penyakit 1
+        # cfgp1_= defaultdict(float)
+        cfgp1_={}
 
+        counter = 1
         for cfuser in gejala:
-            counter =+1
-            #globals()['cfug_%0d'% counter] =
-            # cfuserfloat = request.POST.get(gejala+str(counter))
-            # print (cfuserfloat)
+            d['cfug_%02d' % counter] = request.POST.get(cfuser.kode_gejala)
+            counter += 1
+            # print (request.POST)
+
+        for penyakit in penyakit:
+            for gejala_penyakit in gej_pen:
+                if gejala_penyakit.kode_penyakit == penyakit.kode_penyakit:
+                    urut = int(gejala_penyakit.kode_penyakit[-2])
+                    cfgp1_['cfg{0}'.format(urut)] = cfug_[urut] * gejala_penyakit.bobotcf
+
+        for key, value in sorted(d.items()):
+            print (key, value)
+        for key, value in sorted(cfgp1_.items()):
+            print (key, value)
 
         #return HttpResponseRedirect(reverse('sitederma:hasil'))
 
@@ -116,3 +127,8 @@ def hasil_view(request):
 
 def riwayat_view(request):
     return render(request, "sitederma/riwayat.html")
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')

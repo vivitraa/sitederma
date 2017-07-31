@@ -50,13 +50,6 @@
       <ul class="nav navbar-nav">
         <li><a href="{% url 'sitederma:home_utama' %}">Beranda</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Konsultasi<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="{% url 'sitederma:konsultasi' %}">Mulai Konsultasi</a></li>
-              <li><a href="{% url 'sitederma:riwayat' %}">Riwayat Konsultasi</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="{% url 'sitederma:infopenyakit' %}">Info Penyakit</a></li>
@@ -66,10 +59,7 @@
         <li><a href="{% url 'sitederma:kontak' %}">Kontak</a></li>
         <li><a href="{% url 'sitederma:help'%}">Bantuan</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'sitederma:signup' %}"><span class="glyphicon glyphicon-user"></span> Daftar</a></li>
-        <li><a href="{% url 'sitederma:login' %}"><span class="glyphicon glyphicon-log-in"></span> Masuk</a></li>
-      </ul>
+
       {% endif %}
     </div>
   </nav>

@@ -3,13 +3,28 @@
 {% load static %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="container-fluid vitra-background-beranda">
   <div class="row">
     <div id="vitra-background-green">
       <div class="col-md-2"></div>
       <div class="col-md-8 text-center">
         <div style="margin: 50px 0px;">
-          <img src="{% static 'image/kucing.jpg'%}" class="img-circle" width="200" height="200"/>
+        <img src="{% static 'image/kucing.jpg'%}" class="img-circle" width="200" height="200"/>
+          <p class="vitra-tagline">Selamat datang di Feline Dermatology</p>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+  {% else %}
+  <div class="container-fluid vitra-background-beranda">
+  <div class="row">
+    <div id="vitra-background-green">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 text-center">
+        <div style="margin: 50px 0px;">
+        <img src="{% static 'image/kucing.jpg'%}" class="img-circle" width="200" height="200"/>
           <p class="vitra-tagline">Selamat datang di Feline Dermatology</p>
         </div>
       </div>
@@ -18,7 +33,17 @@
   </div>
   <div class="row">
     <div id="vitra-background-grey">
-    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+      <div style="margin: 50px 0px;">
+    <p class="vitra-daftar">Untuk melakukan konsultasi, silahkan masuk atau daftar terlebih dahulu</p>
+      <a href="{% url 'sitederma:login' %}"><button class="btn btn-lg">Masuk</button></a>
+      <a href="{% url 'sitederma:signup' %}"><button class="btn btn-lg">Daftar</button></a>
   </div>
+  </div>
+</div>
+</div>
+</div>
+  {% endif %}
 </div>
 {% endblock %}

@@ -17,9 +17,8 @@
       <div class="col-md-8 text-left vitra-background-Tanya">
           <p>{{ tanya.daftar_tanya }}</p>
           {% for pilihan in list_pilihan %}
-          <input type="radio" name="choice" id="choice" value="{{list_pilihan.bobotjawab}}" />
+          <input type="radio" name="{{tanya.kode_gejala}}" id="choice" value="{{pilihan.bobotjawab}}" />
           <label for="choice{{ forloop.counter }}">{{ pilihan.jawab }}</label>
-
           {% endfor %}
       </div>
     </div>
