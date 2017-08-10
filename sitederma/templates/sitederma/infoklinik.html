@@ -1,0 +1,24 @@
+{% extends 'sitederma/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid vitra-background-info-klinik">
+  <h4 class="vitra-tagline text-center">Daftar Klinik dan Praktik Dokter Hewan</h4>
+  <center><img src="{% static 'image/kucing.jpg'%}" class="thumbnail" width="200" height="200"/></center>
+  <br>
+  <div style="margin-bottom: 20px;">
+  {% for info_klinik in info_klinik %}
+      <div class="col-md-12 text-left vitra-background-info2">
+          <div class="well">
+        <p>Nama Klinik : {{ info_klinik.nama_klinik}}</p>
+        <p>Wilayah : {{ info_klinik.wilayah }}</p>
+        <p>Alamat : {{ info_klinik.alamat }}</p>
+        <p>No Telepon : {{ info_klinik.no_telp }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+</br>
+</div>
+
+{% endblock %}

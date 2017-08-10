@@ -8,6 +8,10 @@
 </script>
 
 <div class="container-fluid vitra-background-mulai-konsul">
+    <h4 class="vitra-tagline text-center">Halaman Konsultasi</h4>
+    <div class="col-md-6 text-center">
+      <h5 style="color: white; font-size:15px;">JAWABLAH PERTANYAAN-PERTANYAAN DI BAWAH INI:</h5>
+    </div>
 <form method="POST">
   {% csrf_token %}
   {% for tanya in list_tanya %}
@@ -15,11 +19,14 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
       <div class="col-md-8 text-left vitra-background-Tanya">
+        <div class="well">
+          <p>Soal No. {{ tanya.no_tanya}}</p>
           <p>{{ tanya.daftar_tanya }}</p>
           {% for pilihan in list_pilihan %}
           <input type="radio" name="{{tanya.kode_gejala}}" id="choice" value="{{pilihan.bobotjawab}}" />
           <label for="choice{{ forloop.counter }}">{{ pilihan.jawab }}</label>
           {% endfor %}
+        </div>
       </div>
     </div>
     <div class="col-md-1"></div>
@@ -33,8 +40,9 @@
 
 
   {% endfor %}
-  <input type='submit' value="submit">
+  <br><center><input type='submit' class="btn btn-default btn-lg" value="submit"><center>
 </form>
+</br>
 </div>
 
 {% endblock %}

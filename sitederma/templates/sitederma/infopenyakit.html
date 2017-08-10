@@ -11,21 +11,29 @@
       <div class="col-md-4 text-center" style="margin: 60px 0px; ">
         <div class="row vitra-tagline" style="margin-bottom: 20px;">
         {{ info_penyakit.nama_penyakit}}
-      </div>
-      <div class="row">
-        <img src="{% static 'image/kucing.jpg'%}" width="200" height="200"/>
-      </div>
+        </div>
+        <div class="row">
+        <center><img src="{% static 'image/kucing.jpg'%}" class="thumbnail" width="200" height="200"/></center>
+        </div>
       </div>
       <div class="col-md-8 text-left vitra-background-info">
-        <p>nama lain penyakit : {{ info_penyakit.nama_lain_penyakit}}</p>
-        <p>info umum : {{ info_penyakit.info_umum }}</p>
-        <p>penyebab : {{ info_penyakit.penyebab }}</p>
-        <p>gejala : {{ info_penyakit.gejala }}</p>
-        <p>treatment : {{ info_penyakit.treatment }}</p>
-        <p>pencegahan : {{ info_penyakit.pencegahan }}</p>
-        <p>peringatan : {{info_penyakit.peringatan }}</p>
-      </div>
+      <div class="panel panel-default text-left">
+       <div class="panel-heading">
+         <h4>{{ info_penyakit.nama_penyakit}}</h4>
+       </div>
+        <table class="table table-info-penyakit">
+          <tbody>
+        <tr><td>info umum:</td><td>{{ info_penyakit.info_umum }}</td></tr>
+        <tr><td>penyebab:</td><td> {{ info_penyakit.penyebab }}</td></tr>
+        <tr><td>gejala:</td><td> {{ info_penyakit.gejala }}</td></tr>
+        <tr><td>pengobatan:</td><td> {{ info_penyakit.pengobatan }}</td></tr>
+        <tr><td>pencegahan:</td><td> {{ info_penyakit.pencegahan }}</td></tr>
+        <tr><td>peringatan:</td><td> {{info_penyakit.peringatan }}</td></tr>
+          </tbody>
+      </table>
     </div>
+  </div>
+</div>
     <div class="col-md-1"></div>
   </div>
   {% endfor %}

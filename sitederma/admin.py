@@ -32,8 +32,8 @@ class ListGejalaAdmin(admin.ModelAdmin):
 admin.site.register(ListGejala, ListGejalaAdmin)
 
 class KonsultasiAdmin(admin.ModelAdmin):
-    list_display = ['kodecf','kode_penyakit','kode_gejala','bobotcf',]
-    search_fields = ['bobotcf']
+    list_display = ['kodecf','kode_penyakit','kode_gejala','cfp',]
+    search_fields = ['cfp']
     list_per_page = 25
 admin.site.register(Konsultasi, KonsultasiAdmin)
 

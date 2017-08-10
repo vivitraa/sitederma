@@ -37,7 +37,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="{% url 'sitederma:infopenyakit' %}">Info Penyakit</a></li>
-              <li><a href="#">Info Klinik</a></li>
+              <li><a href="{% url 'sitederma:infoklinik' %}">Info Klinik</a></li>
             </ul>
         </li>
         <li><a href="{% url 'sitederma:kontak' %}">Kontak</a></li>
@@ -53,11 +53,11 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="{% url 'sitederma:infopenyakit' %}">Info Penyakit</a></li>
-              <li><a href="#">Info Klinik</a></li>
+              <li><a href="{% url 'sitederma:infoklinik' %}">Info Klinik</a></li>
             </ul>
         </li>
         <li><a href="{% url 'sitederma:kontak' %}">Kontak</a></li>
-        <li><a href="{% url 'sitederma:help'%}">Bantuan</a></li>
+        <li><a href="{% url 'sitederma:help' %}">Bantuan</a></li>
       </ul>
 
       {% endif %}

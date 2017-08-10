@@ -4,19 +4,118 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+
+<!-- halaman setelah melakukan login -->
 <div class="container-fluid vitra-background-beranda">
   <div class="row">
     <div id="vitra-background-green">
       <div class="col-md-2"></div>
       <div class="col-md-8 text-center">
         <div style="margin: 50px 0px;">
-        <img src="{% static 'image/kucing.jpg'%}" class="img-circle" width="200" height="200"/>
-          <p class="vitra-tagline">Selamat datang di Feline Dermatology</p>
+        <img src="{% static 'image/logofinish.png'%}" class="img-thumbnail" width="400" height="400"/>
+          <p class="vitra-tagline">"your feline dermatology bestfriend"</p>
         </div>
       </div>
       <div class="col-md-2"></div>
     </div>
   </div>
+
+  <div class="row">
+    <div id="vitra-background-deep">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+      <div style="margin: 50px 0px;">
+        <p class="vitra-tagline">Penyakit Kulit pada Kucing</p>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
+    <li data-target="#myCarousel" data-slide-to="5"></li>
+    <li data-target="#myCarousel" data-slide-to="6"></li>
+    <li data-target="#myCarousel" data-slide-to="7"></li>
+    <li data-target="#myCarousel" data-slide-to="8"></li>
+    <li data-target="#myCarousel" data-slide-to="9"></li>
+    <li data-target="#myCarousel" data-slide-to="10"></li>
+    <li data-target="#myCarousel" data-slide-to="11"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <!-- untuk tampilan slide ear mites   -->
+    <div class="item active">
+      <img src="{% static 'image/logofinish.png'%}" class="img-thumbnail" width="200" height="200"/>
+    </div>
+    <div class="item">
+      <p class="vitra-tentang">FiDerma adalah aplikasi berbasis website yang dapat membantu kamu untuk mendiagnosis penyakit kulit yang sedang diderita oleh kucing kesayanganmu.
+        Aplikasi ini dapat membantumu untuk menangani secara dini penyakit kulit pada kucing sebelum diperiksakan ke dokter hewan</p>
+    </div>
+
+    <!-- untuk tampilan slide flea -->
+    <div class="item">
+      <img src="{% static 'image/logofinish.png'%}" class="img-thumbnail" width="200" height="200"/>
+    </div>
+    <div class="item">
+      <p class="vitra-tentang">FiDerma adalah aplikasi berbasis website yang dapat membantu kamu untuk mendiagnosis penyakit kulit yang sedang diderita oleh kucing kesayanganmu.
+        Aplikasi ini dapat membantumu untuk menangani secara dini penyakit kulit pada kucing sebelum diperiksakan ke dokter hewan</p>
+    </div>
+
+    <!-- untuk tampilan slide lice -->
+    <div class="item">
+      <img src="{% static 'image/logofinish.png'%}" class="img-thumbnail" width="200" height="200"/>
+    </div>
+    <div class="item">
+      <p class="vitra-tentang">FiDerma adalah aplikasi berbasis website yang dapat membantu kamu untuk mendiagnosis penyakit kulit yang sedang diderita oleh kucing kesayanganmu.
+        Aplikasi ini dapat membantumu untuk menangani secara dini penyakit kulit pada kucing sebelum diperiksakan ke dokter hewan</p>
+    </div>
+
+    <!-- untuk tampilan slide pyoderma -->
+    <div class="item">
+      <img src="{% static 'image/logofinish.png'%}" class="img-thumbnail" width="200" height="200"/>
+    </div>
+    <div class="item">
+      <p class="vitra-tentang">FiDerma adalah aplikasi berbasis website yang dapat membantu kamu untuk mendiagnosis penyakit kulit yang sedang diderita oleh kucing kesayanganmu.
+        Aplikasi ini dapat membantumu untuk menangani secara dini penyakit kulit pada kucing sebelum diperiksakan ke dokter hewan</p>
+    </div>
+
+    <!-- untuk tampilan slide ringworm -->
+    <div class="item">
+      <img src="{% static 'image/logofinish.png'%}" class="img-thumbnail" width="200" height="200"/>
+    </div>
+    <div class="item">
+      <p class="vitra-tentang">FiDerma adalah aplikasi berbasis website yang dapat membantu kamu untuk mendiagnosis penyakit kulit yang sedang diderita oleh kucing kesayanganmu.
+        Aplikasi ini dapat membantumu untuk menangani secara dini penyakit kulit pada kucing sebelum diperiksakan ke dokter hewan</p>
+    </div>
+
+    <!-- untuk tampilan slide scabies -->
+    <div class="item">
+      <img src="{% static 'image/logofinish.png'%}" class="img-thumbnail" width="200" height="200"/>
+    </div>
+    <div class="item">
+      <p class="vitra-tentang">FiDerma adalah aplikasi berbasis website yang dapat membantu kamu untuk mendiagnosis penyakit kulit yang sedang diderita oleh kucing kesayanganmu.
+        Aplikasi ini dapat membantumu untuk menangani secara dini penyakit kulit pada kucing sebelum diperiksakan ke dokter hewan</p>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </div>
+
+<!-- halaman jika belum login -->
   {% else %}
   <div class="container-fluid vitra-background-beranda">
   <div class="row">
@@ -24,19 +123,64 @@
       <div class="col-md-2"></div>
       <div class="col-md-8 text-center">
         <div style="margin: 50px 0px;">
-        <img src="{% static 'image/kucing.jpg'%}" class="img-circle" width="200" height="200"/>
-          <p class="vitra-tagline">Selamat datang di Feline Dermatology</p>
+        <img src="{% static 'image/logofinish.png'%}" class="img-thumbnail" width="400" height="400"/>
+          <p class="vitra-tagline">"your feline dermatology bestfriend"</p>
         </div>
       </div>
       <div class="col-md-2"></div>
     </div>
   </div>
+
+  <div class="row">
+    <div id="vitra-background-deep">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+      <div style="margin: 50px 0px;">
+        <p class="vitra-tagline">APA ITU FIDERMA?</p>
+        <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <p class="vitra-tentang">FiDerma adalah aplikasi berbasis website yang dapat membantu kamu untuk mendiagnosis penyakit kulit yang sedang diderita oleh kucing kesayanganmu.
+              Aplikasi ini dapat membantumu untuk menangani secara dini penyakit kulit pada kucing sebelum diperiksakan ke dokter hewan</p>
+          </div>
+          <div class="item">
+            <p class="vitra-tentang">FiDerma berasal dari kata "Feline" yang artinya adalah kucing dan "Dermatology" adalah salah satu cabang ilmu kedokteran yang mempelajari tentang kulit</p>
+          </div>
+          <div class="item">
+              <p class="vitra-tentang">Untuk mempelajari cara menggunakan aplikasi, klik pada menu Bantuan</p>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  </div>
+  </div>
+</div>
+</div>
+
   <div class="row">
     <div id="vitra-background-grey">
     <div class="col-md-2"></div>
     <div class="col-md-8 text-center">
       <div style="margin: 50px 0px;">
-    <p class="vitra-daftar">Untuk melakukan konsultasi, silahkan masuk atau daftar terlebih dahulu</p>
+    <p class="vitra-daftar">ingin melakukan konsultasi? silahkan masuk atau daftar terlebih dahulu</p>
       <a href="{% url 'sitederma:login' %}"><button class="btn btn-lg">Masuk</button></a>
       <a href="{% url 'sitederma:signup' %}"><button class="btn btn-lg">Daftar</button></a>
   </div>

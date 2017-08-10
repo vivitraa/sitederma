@@ -26,7 +26,7 @@ class Kucing(models.Model):
 class InfoKlinik(models.Model):
     nama_klinik = models.CharField(max_length=50)
     wilayah = models.CharField(max_length=50)
-    alamat = models.CharField(max_length=100)
+    alamat = models.TextField()
     no_telp = models.CharField(max_length=15)
 
     def __str__(self):
@@ -41,7 +41,6 @@ class InfoPenyakit(models.Model):
     pengobatan = models.TextField()
     pencegahan = models.TextField()
     peringatan = models.TextField(blank=True)
-    #info_penyakit_slug = models.SlugField(max_length=50, null=True)
 
     def __str__(self):
         return self.kode_penyakit
@@ -55,6 +54,7 @@ class ListGejala(models.Model):
 class ListTanya(models.Model):
     kode_tanya = models.CharField(max_length=5)
     kode_gejala = models.ForeignKey(ListGejala, related_name = 'tanya_gejala', null=True)
+    no_tanya = models.CharField(max_length=2, null=True)
     daftar_tanya = models.CharField(max_length=150)
     def __str__(self):
         return self.daftar_tanya
@@ -63,7 +63,7 @@ class Konsultasi(models.Model):
     kodecf = models.CharField(max_length=3)
     kode_penyakit = models.ForeignKey(InfoPenyakit, null=True)
     kode_gejala = models.ForeignKey(ListGejala)
-    bobotcf = models.FloatField()
+    cfp = models.FloatField()
     def __str__(self):
         return self.kodecf
 

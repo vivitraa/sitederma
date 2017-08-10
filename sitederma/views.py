@@ -8,7 +8,7 @@ import hashlib, datetime, random
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from .models import UserActivationKey, ListTanya, InfoPenyakit, Jawaban, ListGejala, Konsultasi
+from .models import UserActivationKey, ListTanya, InfoPenyakit, Jawaban, ListGejala, Konsultasi, InfoKlinik
 from django.utils import timezone
 from collections import defaultdict
 
@@ -23,9 +23,20 @@ def help_view(request):
 
 def infopenyakit_view(request):
     info_penyakit = InfoPenyakit.objects.all()
+    gejala = ListGejala.objects.all()
+    kode = Konsultasi.objects.all()
     context = {}
     context ['info_penyakit'] = info_penyakit
+    context ['gejala'] = gejala
+    context ['kode'] = kode
     return render(request, "sitederma/infopenyakit.html", context)
+
+#halaman ini belum berhasil dimunculkan
+def infoklinik_view(request):
+    info_klinik = InfoKlinik.objects.all()
+    context = {}
+    context ['info_klinik'] = info_klinik
+    return render(request, "sitederma/infoklinik.html", context)
 
 def signup_view(request):
     if request.method == 'POST':
@@ -88,8 +99,6 @@ def konsultasi_view(request):
     list_tanya = ListTanya.objects.all()
     list_pilihan = Jawaban.objects.all()
     gejala = ListGejala.objects.all()
-    penyakit = InfoPenyakit.objects.all()
-    gej_pen = Konsultasi.objects.all()
     context = {}
     context ['list_tanya'] = list_tanya
     context ['list_pilihan'] = list_pilihan
@@ -100,30 +109,71 @@ def konsultasi_view(request):
         # cfgp penyakit 1
         # cfgp1_= defaultdict(float)
         cfgp1_={}
-
+        percentdisease = {}
         counter = 1
+
         for cfuser in gejala:
-            d['cfug_%02d' % counter] = request.POST.get(cfuser.kode_gejala)
+            d['cfug_%02d' % counter] = float(request.POST.get(cfuser.kode_gejala))
             counter += 1
             # print (request.POST)
 
-        for penyakit in penyakit:
-            for gejala_penyakit in gej_pen:
-                if gejala_penyakit.kode_penyakit == penyakit.kode_penyakit:
-                    urut = int(gejala_penyakit.kode_penyakit[-2])
-                    cfgp1_['cfg{0}'.format(urut)] = cfug_[urut] * gejala_penyakit.bobotcf
-
         for key, value in sorted(d.items()):
             print (key, value)
-        for key, value in sorted(cfgp1_.items()):
-            print (key, value)
+        # # cf gejala hasil
+        # cfgh = []
+        # disease = InfoPenyakit.objects.get(kode_penyakit="P1")
+        # for item in disease:
+        #     cfgh = cfug
+            # if kode_penyakit = P1:
+            #     cfgh = cfug * Konsultasi.cfp
+            #     print('cfgh', cfgh)
 
-        #return HttpResponseRedirect(reverse('sitederma:hasil'))
+        penyakit = InfoPenyakit.objects.all()
+        gej_pen = Konsultasi.objects.all()
+
+        for pen in penyakit:
+            cfglama = None
+            cfgbaru = None
+            cfgkombinasi = None
+            for gejala_penyakit in gej_pen:
+                if gejala_penyakit.kode_penyakit.kode_penyakit == pen.kode_penyakit:
+                    print('ya')
+                    urut = gejala_penyakit.kode_gejala.kode_gejala[1:]
+                    print(urut)
+                    cfgp1_['cfg{0}'.format(urut)] = d['cfug_{}'.format(urut)] * gejala_penyakit.cfp
+                    if not cfglama:
+                        cfglama = cfgp1_['cfg{0}'.format(urut)]
+                    else :
+                        cfgbaru = cfgp1_['cfg{0}'.format(urut)]
+                        cfgkombinasi = cfglama+(cfgbaru*(1-cfglama))
+                        cfglama = cfgkombinasi
+                    percentdisease['pdisease{0}'.format(pen.kode_penyakit)] = cfgkombinasi
+                    print(percentdisease)
+        context['percentdisease_1'] = percentdisease['pdisease{0}'.format('P1')]
+        context['percentdisease_2'] = percentdisease['pdisease{0}'.format('P2')]
+        context['percentdisease_3'] = percentdisease['pdisease{0}'.format('P3')]
+        context['percentdisease_4'] = percentdisease['pdisease{0}'.format('P4')]
+        context['percentdisease_5'] = percentdisease['pdisease{0}'.format('P5')]
+        context['percentdisease_6'] = percentdisease['pdisease{0}'.format('P6')]
+        request.session['percentdisease'] = {
+                                        'percentdisease_1': context['percentdisease_1'],
+                                        'percentdisease_2': context['percentdisease_2'],
+                                        'percentdisease_3': context['percentdisease_3'],
+                                        'percentdisease_4': context['percentdisease_4'],
+                                        'percentdisease_5': context['percentdisease_5'],
+                                        'percentdisease_6': context['percentdisease_6'],
+                                        }
+
+        # for key, value in sorted(cfgp1_.items()):
+            # print (key, value)
+
+        return HttpResponseRedirect(reverse('sitederma:hasil'))
 
     return render(request, "sitederma/mulai_konsul.html", context)
 
 def hasil_view(request):
-    return render(request, "sitederma/halaman_hasil.html")
+    context = request.session.get('percentdisease')
+    return render(request, "sitederma/halaman_hasil.html", context)
 
 def riwayat_view(request):
     return render(request, "sitederma/riwayat.html")
