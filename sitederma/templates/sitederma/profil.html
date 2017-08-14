@@ -1,0 +1,37 @@
+{% extends 'sitederma/base.html' %}
+{% block content %}
+
+<script>
+  {% if not user.is_authenticated %}
+    window.location = "{% url 'sitederma:login' %}";
+  {% endif %}
+</script>
+
+<div class="container-fluid vitra-background-riwayat">
+  <h4 class="vitra-tagline text-center">Halaman Profil Pengguna</h4>
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+  <br>
+  <div class="panel panel-info">
+   <div class="panel-heading">
+     <h4 class="panel-tittle">Informasi Pengguna</h4>
+   </div>
+   <div class="panel-body">
+     <div class="row">
+       <div class="col-md-8">
+    <table class="table table-profil-pengguna">
+      <tbody>
+    <tr><td>Nama Depan:</td><td>{{ user.first_name }}</td></tr>
+    <tr><td>Nama Belakang:</td><td> {{ user.last_name }}</td></tr>
+    <tr><td>Username:</td><td> {{ user.username }}</td></tr>
+    <tr><td>email:</td><td> {{ user.email }}</td></tr>
+      </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

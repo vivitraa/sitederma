@@ -17,18 +17,18 @@
   margin-top: -20px;
 }
 
+.vitra-background-hasil {
+  min-height: 610px;
+  background-color: #1abc9c;
+  margin-top: -20px;
+}
+
 .vitra-background-info-klinik {
   min-height: 610px;
   background-color: #1abc9c;
   margin-top: -20px;
 
 }
-
-/*.vitra-background-info {
-    background-color: #e0ebeb;
-    height: 370px;
-    padding: 15px;
-}*/
 
 .vitra-background-info2 {
     background-color: #e0ebeb;
@@ -91,7 +91,7 @@
 
 .vitra-background-cara{
   background-color: #e0ebeb;
-  height: 200px;
+  height: 270px;
   padding: 15px;
 }
 

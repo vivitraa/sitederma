@@ -24,12 +24,12 @@
       </div>
       {% if user.is_authenticated %}
       <ul class="nav navbar-nav">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{request.user.username}}</a></li>
+        <li><a href="{% url 'sitederma:profil' %}"><span class="glyphicon glyphicon-user"></span> {{request.user.username}}</a></li>
         <li><a href="{% url 'sitederma:home_utama' %}">Beranda</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Konsultasi<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="{% url 'sitederma:konsultasi' %}">Mulai Konsultasi</a></li>
+              <li><a href="{% url 'sitederma:inputkucing' %}">Mulai Konsultasi</a></li>
               <li><a href="{% url 'sitederma:riwayat' %}">Riwayat Konsultasi</a></li>
             </ul>
         </li>

@@ -1,10 +1,46 @@
 {% extends 'sitederma/base.html' %}
 {% block content %}
 
-percent P1 = {{percentdisease_1}}
-percent P2 = {{percentdisease_2}}
-percent P3 = {{percentdisease_3}}
-percent P4 = {{percentdisease_4}}
-percent P5 = {{percentdisease_5}}
-percent P6 = {{percentdisease_6}}
+<div class="container-fluid vitra-background-hasil">
+<div class="row">
+  <div id="vitra-background-green">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+      <div style="margin: 50px 0px;">
+        <div class="panel panel-default text-left">
+         <div class="panel-heading text-center">
+           <h4>Persentase kemungkinan penyakit kulit yang diderita</h4>
+         </div>
+        <table class="table table-hasil-information">
+          <tbody>
+            <tr><td>persentase menderita Ear Mites </td><td>{{percentdisease_1}}</td></tr>
+            <tr><td>persentase menderita Flea </td><td>{{percentdisease_2}}</td></tr>
+            <tr><td>persentase menderita Lice </td><td>{{percentdisease_3}}</td></tr>
+            <tr><td>persentase menderita Pyoderma </td><td>{{percentdisease_4}}</td></tr>
+            <tr><td>persentase menderita Ringworm </td><td>{{percentdisease_5}}</td></tr>
+            <tr><td>persentase menderita Scabies </td><td>{{percentdisease_6}}</td></tr>
+            <tr><td><strong>penyakit yang diderita</strong></td><td>
+              {% if targetdisease == "diseaseP1" %}
+              Ear Mites
+              {% elif targetdisease == 'diseaseP2' %}
+              Flea
+              {% elif targetdisease == 'diseaseP3' %}
+              Lice
+              {% elif targetdisease == 'diseaseP4' %}
+              Pyoderma
+              {% elif targetdisease == 'diseaseP5' %}
+              Ringworm
+              {% else%}
+              Scabies
+              {% endif %}</td></tr>
+            
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+</div>
+
 {% endblock %}

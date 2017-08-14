@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kucing, InfoKlinik, InfoPenyakit, ListGejala, Konsultasi, Jawaban, ListTanya
+from .models import Kucing, InfoKlinik, InfoPenyakit, ListGejala, Konsultasi, Jawaban, ListTanya, Riwayat
 
 class KucingAdmin(admin.ModelAdmin):
     list_display = ['nama_kucing', 'umur_kucing', 'gender_kucing',]
@@ -42,3 +42,9 @@ class JawabanAdmin(admin.ModelAdmin):
     search_fields = ['kodejawab']
     list_per_page = 25
 admin.site.register(Jawaban, JawabanAdmin)
+
+class RiwayatAdmin(admin.ModelAdmin):
+    list_display = ['kode_riwayat', 'kode_kucing', 'nama_kucing', 'username', 'hasil_diagnosa','tanggal_diagnosa']
+    search_fields = ['kodejawab']
+    list_per_page = 25
+admin.site.register(Riwayat, RiwayatAdmin)

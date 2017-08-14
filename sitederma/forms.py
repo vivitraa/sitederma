@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import ListTanya
+from .models import ListTanya, Kucing
+
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='username', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'username'}))
@@ -40,3 +41,10 @@ class PertanyaanForm(forms.ModelForm):
     class Meta:
         model = ListTanya
         fields = '__all__'
+
+class KucingForm(forms.ModelForm):
+    nama_kucing = forms.CharField(label='Nama Kucing', widget=forms.TextInput)
+
+    class Meta:
+        model = Kucing
+        fields = ('nama_kucing', 'umur_kucing', 'gender_kucing')

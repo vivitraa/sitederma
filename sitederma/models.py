@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
 import datetime
+from django.core.validators import MinValueValidator
 
 class UserActivationKey(models.Model):
     user = models.OneToOneField(User)
@@ -16,10 +17,11 @@ class Kucing(models.Model):
     ('jantan', 'Jantan'),
     )
 
+    # kode_kucing = models.CharField(max_length=3, null=True)
     nama_kucing = models.CharField(max_length=30)
-    umur_kucing = models.CharField(max_length=10)
+    umur_kucing = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     gender_kucing = models.CharField(max_length=10, choices=GENDER_KUCING_CHOICES)
-    pemilik = models.ForeignKey(User, null=True)
+    username = models.ForeignKey(User, null=True)
     def __str__(self):
         return self.nama_kucing
 
@@ -73,3 +75,13 @@ class Jawaban(models.Model):
     bobotjawab = models.FloatField()
     def __str__(self):
         return self.jawab
+
+class Riwayat(models.Model):
+    kode_riwayat = models.CharField(max_length=3)
+    kode_kucing = models.ForeignKey(Kucing, related_name = 'request_kode_kucing')
+    nama_kucing = models.ForeignKey(Kucing, related_name = 'request_nama_kucing')
+    username = models.ForeignKey(User, related_name = 'request_username')
+    hasil_diagnosa = models.FloatField(max_length=30)
+    tanggal_diagnosa = models.DateTimeField(blank=True, null=True)
+    def __str__(self):
+        return self.kode_riwayat
