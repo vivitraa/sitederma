@@ -1,8 +1,11 @@
 {% extends 'sitederma/base.html' %}
-
+{% load static %}
 {% block content %}
 
 <div class="container-fluid vitra-background-daftar">
+  <h4 class="vitra-tagline text-center">Halaman Profil Kucing</h4>
+  <center><img src="{% static 'image/kucing.jpg'%}" class="thumbnail" width="200" height="200"/></center>
+  <br>
   <div class="col-md-4"></div>
   <div class="col-md-4">
     <div style="margin-top:70px;">
@@ -14,13 +17,21 @@
             {{ field }}
           </div>
           {% endfor %}
+          <p>*catatan : umur kucing dalam hitungan bulan</p>
         </div>
         <div class="text-center" style="margin-top: 20px;">
-          <a href="{% url 'sitederma:konsultasi' %}">
             <button type="submit" name="inputkucing" class="btn btn-default">Simpan</button>
-          </a>
         </div>
       </form>
+      <!-- {% for infokucing in infokucing %}
+        <div class="col-md-12 text-left vitra-background-info2">
+          <div class="well">
+            <p>Nama Kucing : {{ infokucing.nama_kucing}}</p>
+            <p>Umur Kucing : {{ infokucing.umur_kucing }}</p>
+            <p>Gender Kucing : {{ infokucing.gender_kucing }}</p>
+          </div>
+        </div>
+      {% endfor %} -->
     </div>
   </div>
   <div class="col-md-4"></div>

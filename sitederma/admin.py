@@ -44,7 +44,7 @@ class JawabanAdmin(admin.ModelAdmin):
 admin.site.register(Jawaban, JawabanAdmin)
 
 class RiwayatAdmin(admin.ModelAdmin):
-    list_display = ['kode_riwayat', 'kode_kucing', 'nama_kucing', 'username', 'hasil_diagnosa','tanggal_diagnosa']
-    search_fields = ['kodejawab']
+    list_display = ['nama_kucing', 'username', 'hasil_diagnosa','tanggal_diagnosa']
+    search_fields = ['nama_kucing']
     list_per_page = 25
 admin.site.register(Riwayat, RiwayatAdmin)

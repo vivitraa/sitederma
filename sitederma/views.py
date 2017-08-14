@@ -3,12 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from .forms import SignupForm, KucingForm
+from .forms import SignupForm, KucingForm, RiwayatForm
 import hashlib, datetime, random
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from .models import UserActivationKey, ListTanya, InfoPenyakit, Jawaban, ListGejala, Konsultasi, InfoKlinik
+from .models import UserActivationKey, ListTanya, InfoPenyakit, Jawaban, ListGejala, Konsultasi, InfoKlinik, Kucing
 from django.utils import timezone
 from collections import defaultdict
 import operator
@@ -96,32 +96,29 @@ def account_expired_view():
     return render(request, "sitederma/account_expired.html")
 
 def profil_view(request):
-    kucing = Kucing.objects.all()
-    pemilik = User.objects.all()
-    context = {}
-    context ['kucing'] = kucing
-    context ['pemilik'] = pemilik
     return render(request, "sitederma/profil.html")
 
+
 def inputkucing_view(request):
+    infokucing = Kucing.objects.all()
+    context = {}
+    context ['infokucing'] = infokucing
+    
     if request.method == 'POST':
         form = KucingForm(request.POST)
         if form.is_valid():
             kucing = form.save(commit=False)
-            # user.is_active = False
             kucing.username = request.user
             kucing.save()
 
-            # username = form.cleaned_data['username']
-            # email = form.cleaned_data['email']
-
-            return HttpResponseRedirect('/konsultasi/')
+            return HttpResponseRedirect('/input_kucing/')
     else:
         form = KucingForm()
 
     return render(request, 'sitederma/inputkucing.html', {'form': form})
 
 def konsultasi_view(request):
+
     list_tanya = ListTanya.objects.all()
     list_pilihan = Jawaban.objects.all()
     gejala = ListGejala.objects.all()
@@ -130,10 +127,9 @@ def konsultasi_view(request):
     context ['list_pilihan'] = list_pilihan
 
     if request.method=='POST':
+        formriwayat = RiwayatForm(request.POST)
         d = defaultdict(float)
         d = {}
-        # cfgp penyakit 1
-        # cfgp1_= defaultdict(float)
         cfgp1_={}
         percentdisease = {}
         counter = 1
@@ -141,19 +137,8 @@ def konsultasi_view(request):
         for cfuser in gejala:
             d['cfug_%02d' % counter] = float(request.POST.get(cfuser.kode_gejala))
             counter += 1
-            # print (request.POST)
-
         for key, value in sorted(d.items()):
             print (key, value)
-        # # cf gejala hasil
-        # cfgh = []
-        # disease = InfoPenyakit.objects.get(kode_penyakit="P1")
-        # for item in disease:
-        #     cfgh = cfug
-            # if kode_penyakit = P1:
-            #     cfgh = cfug * Konsultasi.cfp
-            #     print('cfgh', cfgh)
-
         penyakit = InfoPenyakit.objects.all()
         gej_pen = Konsultasi.objects.all()
 
@@ -181,12 +166,6 @@ def konsultasi_view(request):
         context['percentdisease_4'] = percentdisease['pdisease{0}'.format('P4')]
         context['percentdisease_5'] = percentdisease['pdisease{0}'.format('P5')]
         context['percentdisease_6'] = percentdisease['pdisease{0}'.format('P6')]
-        # hasil = {'Ear Mites': percentdisease['pdisease{0}'.format('P1')],
-        #          'Flea': percentdisease['pdisease{0}'.format('P2')],
-        #          'Lice': percentdisease['pdisease{0}'.format('P3')],
-        #          'Pyoderma': percentdisease['pdisease{0}'.format('P4')],
-        #          'Ringworm': percentdisease['pdisease{0}'.format('P5')],
-        #          'Scabies': percentdisease['pdisease{0}'.format('P6')],}
         context['targetdisease']=max(percentdisease, key=percentdisease.get)
         request.session['percentdisease'] = {
                                         'percentdisease_1': context['percentdisease_1'],
@@ -197,13 +176,28 @@ def konsultasi_view(request):
                                         'percentdisease_6': context['percentdisease_6'],
                                         'targetdisease': context['targetdisease'],
                                         }
-
-        # for key, value in sorted(cfgp1_.items()):
-            # print (key, value)
-
+        if formriwayat.is_valid():
+            kucing = formriwayat.save(commit=False)
+            kucing.username = request.user
+            kucing.tanggal_diagnosa = request.today
+            if targetdisease == "diseaseP1":
+                    kucing.hasil_diagnosa = 'Ear Mites'
+            elif targetdisease == "diseaseP2":
+                kucing.hasil_diagnosa = 'Flea'
+            elif targetdisease == "diseaseP3":
+                kucing.hasil_diagnosa = 'Lice'
+            elif targetdisease == "diseaseP4":
+                kucing.hasil_diagnosa = 'Pyoderma'
+            elif targetdisease == "diseaseP5":
+                kucing.hasil_diagnosa = "Ringworm"
+            else :
+                kucing.hasil_diagnosa = 'Scabies'
+            kucing.save()
         return HttpResponseRedirect(reverse('sitederma:hasil'))
-
-    return render(request, "sitederma/mulai_konsul.html", context)
+    else:
+        formriwayat = RiwayatForm()
+    # context ={'formriwayat':formriwayat,}
+    return render(request, "sitederma/mulai_konsul.html",  context)
 
 def hasil_view(request):
     context = request.session.get('percentdisease')

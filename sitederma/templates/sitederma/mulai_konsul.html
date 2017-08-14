@@ -8,12 +8,19 @@
 </script>
 
 <div class="container-fluid vitra-background-mulai-konsul">
-    <h4 class="vitra-tagline text-center">Halaman Konsultasi</h4>
+  <h4 class="vitra-tagline text-center">Halaman Konsultasi</h4>
+  <div class="row">
     <div class="col-md-6 text-center">
       <h5 style="color: white; font-size:15px;">JAWABLAH PERTANYAAN-PERTANYAAN DI BAWAH INI:</h5>
     </div>
 <form method="POST">
   {% csrf_token %}
+  {% for field in formriwayat %}
+  <div style="margin-top: 10px; color:black;">
+    {{ field.label_tag|escape }}
+    {{ field }}
+  </div>
+  {% endfor %}
   {% for tanya in list_tanya %}
   <div class="row" style="margin-top: 50px;">
     <div class="col-md-1"></div>

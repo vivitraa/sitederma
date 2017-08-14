@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import ListTanya, Kucing
+from .models import Kucing, Riwayat
 
 
 class LoginForm(AuthenticationForm):
@@ -27,24 +27,14 @@ class SignupForm(UserCreationForm):
             raise ValidationError("Email yang anda masukan sudah terdaftar")
         return email
 
-class PertanyaanForm(forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        super(PertanyaanForm, self).__init__(*args, **kwargs)
-
-        for name, field in self.fields.items():
-            field.widget = form.RadioSelect()
-            field.empty_value = None
-            field.choices = List_Choice
-            field.widget.attrs = {'class': 'magic-radio'}
-
-    class Meta:
-        model = ListTanya
-        fields = '__all__'
-
 class KucingForm(forms.ModelForm):
     nama_kucing = forms.CharField(label='Nama Kucing', widget=forms.TextInput)
 
     class Meta:
         model = Kucing
         fields = ('nama_kucing', 'umur_kucing', 'gender_kucing')
+
+class RiwayatForm(forms.ModelForm):
+    class Meta:
+        model = Kucing
+        fields = ('nama_kucing',)
