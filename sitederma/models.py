@@ -17,9 +17,8 @@ class Kucing(models.Model):
     ('jantan', 'Jantan'),
     )
 
-    # kode_kucing = models.CharField(max_length=3, null=True)
     nama_kucing = models.CharField(max_length=30)
-    umur_kucing = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+    umur_kucing = models.PositiveIntegerField(validators=[MinValueValidator(1)], null=True)
     gender_kucing = models.CharField(max_length=10, choices=GENDER_KUCING_CHOICES)
     username = models.ForeignKey(User, null=True)
     def __str__(self):
@@ -79,7 +78,7 @@ class Jawaban(models.Model):
 class Riwayat(models.Model):
     nama_kucing = models.ForeignKey(Kucing, related_name = 'request_nama_kucing')
     username = models.ForeignKey(User, related_name = 'request_username')
-    hasil_diagnosa = models.FloatField(max_length=30)
+    hasil_diagnosa = models.FloatField(max_length=30, null=True)
     tanggal_diagnosa = models.DateTimeField(blank=True, null=True)
     def __str__(self):
         return self.nama_kucing

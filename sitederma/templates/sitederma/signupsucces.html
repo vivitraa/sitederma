@@ -2,14 +2,17 @@
 
 {% block content %}
 
-<div class="container-fluid tinggihalaman">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <div style="margin-top:200px;">
-      <h2 class="text-center">Pendaftaran akun anda berhasil</h2>
-    </div>
+<div class="container-fluid vitra-background-riwayat">
+  <div class="container-fluid tinggihalaman">
+    <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div style="margin-top:200px;">
+          <h2 class="text-center">Pendaftaran akun anda berhasil dilakukan, untuk melakukan konsultasi klik pada tombol masuk</h2>
+          <center><a href="{% url 'sitederma:login' %}"><button class="btn btn-lg">Masuk</button></a></center>
+        </div>
+      </div>
+    <div class="col-md-4"></div>
   </div>
-  <div class="col-md-4"></div>
 </div>
 
 {% endblock %}

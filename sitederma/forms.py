@@ -36,5 +36,5 @@ class KucingForm(forms.ModelForm):
 
 class RiwayatForm(forms.ModelForm):
     class Meta:
-        model = Kucing
+        model = Riwayat
         fields = ('nama_kucing',)

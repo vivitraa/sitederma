@@ -12,37 +12,26 @@
   <div class="col-md-2"></div>
   <div class="col-md-8">
   <br>
-  <div class="panel panel-info">
-   <div class="panel-heading">
-     <h4 class="panel-tittle">Informasi Pengguna</h4>
-   </div>
-   <div class="panel-body">
-     <div class="row">
-       <div class="col-md-8">
-    <table class="table table-profil-pengguna">
-      <tbody>
-    <tr><td>Nama Depan:</td><td>{{ user.first_name }}</td></tr>
-    <tr><td>Nama Belakang:</td><td> {{ user.last_name }}</td></tr>
-    <tr><td>Username:</td><td> {{ user.username }}</td></tr>
-    <tr><td>email:</td><td> {{ user.email }}</td></tr>
-      </tbody>
-  </table>
-</div>
-</div>
-</div>
-</div>
-
-
-<!-- {% for infokucing in infokucing %}
-  <div class="col-md-12 text-left vitra-background-info2">
-    <div class="well">
-      <p>Nama Kucing : {{ infokucing.nama_kucing}}</p>
-      <p>Umur Kucing : {{ infokucing.umur_kucing }}</p>
-      <p>Gender Kucing : {{ infokucing.gender_kucing }}</p>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h4 class="panel-tittle">Informasi Pengguna</h4>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-8">
+            <table class="table table-profil-pengguna">
+              <tbody>
+                <tr><td>Nama Depan:</td><td>{{ user.first_name }}</td></tr>
+                <tr><td>Nama Belakang:</td><td> {{ user.last_name }}</td></tr>
+                <tr><td>Username:</td><td> {{ user.username }}</td></tr>
+                <tr><td>email:</td><td> {{ user.email }}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-{% endfor %} -->
-</div>
 </div>
 
 {% endblock %}

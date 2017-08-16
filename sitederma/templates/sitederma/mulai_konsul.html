@@ -13,36 +13,36 @@
     <div class="col-md-6 text-center">
       <h5 style="color: white; font-size:15px;">JAWABLAH PERTANYAAN-PERTANYAAN DI BAWAH INI:</h5>
     </div>
-<form method="POST">
-  {% csrf_token %}
-  {% for field in formriwayat %}
-  <div style="margin-top: 10px; color:black;">
-    {{ field.label_tag|escape }}
-    {{ field }}
-  </div>
-  {% endfor %}
-  {% for tanya in list_tanya %}
-  <div class="row" style="margin-top: 50px;">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <div class="col-md-8 text-left vitra-background-Tanya">
-        <div class="well">
-          <p>Soal No. {{ tanya.no_tanya}}</p>
-          <p>{{ tanya.daftar_tanya }}</p>
-          {% for pilihan in list_pilihan %}
-          <input type="radio" name="{{tanya.kode_gejala}}" id="choice" value="{{pilihan.bobotjawab}}" required />
-          <label for="choice{{ forloop.counter }}">{{ pilihan.jawab }}</label>
-          {% endfor %}
+    <form method="POST">
+      {% csrf_token %}
+      {% for field in formriwayat %}
+    <div style="margin-top: 10px; color:black;">
+      {{ field.label_tag|escape }}
+      {{ field }}
+    </div>
+    {% endfor %}
+    {% for tanya in list_tanya %}
+    <div class="row" style="margin-top: 50px;">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="col-md-8 text-left vitra-background-Tanya">
+          <div class="well">
+            <p>Soal No. {{ tanya.no_tanya}}</p>
+            <p>{{ tanya.daftar_tanya }}</p>
+            {% for pilihan in list_pilihan %}
+            <input type="radio" name="{{tanya.kode_gejala}}" id="choice" value="{{pilihan.bobotjawab}}" required />
+            <label for="choice{{ forloop.counter }}">{{ pilihan.jawab }}</label>
+            {% endfor %}
         </div>
       </div>
     </div>
     <div class="col-md-1"></div>
   </div>
-
   {% endfor %}
   <br><center><input type='submit' class="btn btn-default btn-lg" value="submit"><center>
-</form>
-</br>
+    </form>
+  </br>
+  </div>
 </div>
 
 {% endblock %}

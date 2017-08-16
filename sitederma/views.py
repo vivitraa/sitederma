@@ -103,7 +103,7 @@ def inputkucing_view(request):
     infokucing = Kucing.objects.all()
     context = {}
     context ['infokucing'] = infokucing
-    
+
     if request.method == 'POST':
         form = KucingForm(request.POST)
         if form.is_valid():
@@ -118,7 +118,7 @@ def inputkucing_view(request):
     return render(request, 'sitederma/inputkucing.html', {'form': form})
 
 def konsultasi_view(request):
-
+    diagnosa = None
     list_tanya = ListTanya.objects.all()
     list_pilihan = Jawaban.objects.all()
     gejala = ListGejala.objects.all()
@@ -166,7 +166,20 @@ def konsultasi_view(request):
         context['percentdisease_4'] = percentdisease['pdisease{0}'.format('P4')]
         context['percentdisease_5'] = percentdisease['pdisease{0}'.format('P5')]
         context['percentdisease_6'] = percentdisease['pdisease{0}'.format('P6')]
-        context['targetdisease']=max(percentdisease, key=percentdisease.get)
+        targetdisease = max(percentdisease, key=percentdisease.get)
+        context['targetdisease'] = targetdisease
+        if targetdisease == "diseaseP1":
+            diagnosa ='Ear Mites'
+        elif targetdisease == "diseaseP2":
+            diagnosa = 'Flea'
+        elif targetdisease == "diseaseP3":
+            diagnosa = 'Lice'
+        elif targetdisease == "diseaseP4":
+            diagnosa = 'Pyoderma'
+        elif targetdisease == "diseaseP5":
+            diagnosa = 'Ringworm'
+        elif targetdisease == "diseaseP6":
+            diagnosa = 'Scabies'
         request.session['percentdisease'] = {
                                         'percentdisease_1': context['percentdisease_1'],
                                         'percentdisease_2': context['percentdisease_2'],
@@ -179,24 +192,13 @@ def konsultasi_view(request):
         if formriwayat.is_valid():
             kucing = formriwayat.save(commit=False)
             kucing.username = request.user
-            kucing.tanggal_diagnosa = request.today
-            if targetdisease == "diseaseP1":
-                    kucing.hasil_diagnosa = 'Ear Mites'
-            elif targetdisease == "diseaseP2":
-                kucing.hasil_diagnosa = 'Flea'
-            elif targetdisease == "diseaseP3":
-                kucing.hasil_diagnosa = 'Lice'
-            elif targetdisease == "diseaseP4":
-                kucing.hasil_diagnosa = 'Pyoderma'
-            elif targetdisease == "diseaseP5":
-                kucing.hasil_diagnosa = "Ringworm"
-            else :
-                kucing.hasil_diagnosa = 'Scabies'
+            kucing.tanggal_diagnosa = timezone.now()
+            kucing.hasil_diagnosa = diagnosa
             kucing.save()
-        return HttpResponseRedirect(reverse('sitederma:hasil'))
+            return HttpResponseRedirect(reverse('sitederma:hasil'))
     else:
         formriwayat = RiwayatForm()
-    # context ={'formriwayat':formriwayat,}
+    context['formriwayat']=formriwayat
     return render(request, "sitederma/mulai_konsul.html",  context)
 
 def hasil_view(request):
